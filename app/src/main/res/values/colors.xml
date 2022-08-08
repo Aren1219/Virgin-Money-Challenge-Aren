@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="red">#F44336</dimen>
-    <dimen name="green">#4CAF50</dimen>
-
+    <color name="red">#C40202</color>
+    <color name="light_red">#EF5350</color>
+    <color name="dark_red">#D32F2F</color>
+<!--    <color name="light_red">#C40202</color>-->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>

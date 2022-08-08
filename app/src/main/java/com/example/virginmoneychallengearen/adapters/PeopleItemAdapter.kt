@@ -36,15 +36,17 @@ class PeopleItemAdapter(
         holder.binding.tvEmployeeName.text = "${employee.firstName} ${employee.lastName}"
         holder.binding.tvEmployeeId.text = employee.id
         holder.binding.tvEmployeeJobTitle.text = employee.jobtitle
-        setOnItemClickListener {
-            onItemClickListener?.let { it(employee) }
+        holder.itemView.setOnClickListener() {
+//            var
+//            employee.lastName
+//            employee.email
         }
     }
 
     override fun getItemCount(): Int = employeeList.size
 
-    private val onItemClickListener: ((PeopleItemModel)->Unit)? = null
-    fun setOnItemClickListener(listener:(PeopleItemModel)->Unit){
-        listener
-    }
+//    private val onItemClickListener: ((PeopleItemModel)->Unit)? = null
+//    fun setOnItemClickListener(listener:(PeopleItemModel)->Unit){
+//        listener
+//    }
 }

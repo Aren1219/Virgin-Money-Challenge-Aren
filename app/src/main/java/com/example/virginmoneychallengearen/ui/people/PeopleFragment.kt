@@ -34,7 +34,7 @@ class PeopleFragment: Fragment(R.layout.fragment_people) {
 
         binding.rvPeople.apply {
 //            setBackgroundResource(R.color.bgClassicMusic)
-            background = AppCompatResources.getDrawable(context, R.color.teal_200)
+//            background = AppCompatResources.getDrawable(context, R.color.teal_200)
             layoutManager = LinearLayoutManager(context)
         }
 

@@ -31,10 +31,10 @@ class MainActivity() : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        setContentView(binding.root)
 
-        val myViewPager: ViewPager2 = findViewById(R.id.vpMain)
-        val myTabLayout: TabLayout = findViewById(R.id.tlMain)
+        val myViewPager: ViewPager2 = binding.vpMain  //use bindings instead of xml reference
+//        val myTabLayout: TabLayout = findViewById(R.id.tlMain)
+        val myTabLayout: TabLayout = binding.tlMain
 
         val texts = listOf("People", "Room")
         val mAdapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
@@ -43,5 +43,8 @@ class MainActivity() : AppCompatActivity() {
         TabLayoutMediator(myTabLayout,myViewPager){tab,position->
             tab.text=texts[position]
         }.attach()
+
+        setContentView(binding.root)
+
     }
 }

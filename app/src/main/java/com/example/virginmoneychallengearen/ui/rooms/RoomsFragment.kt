@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.bumptech.glide.load.engine.Resource
 import com.example.virginmoneychallengearen.R
+import com.example.virginmoneychallengearen.adapters.PeopleItemAdapter
 import com.example.virginmoneychallengearen.adapters.RoomItemAdapter
 import com.example.virginmoneychallengearen.databinding.FragmentRoomsBinding
 import com.example.virginmoneychallengearen.util.UiState
@@ -35,13 +36,13 @@ class RoomsFragment:Fragment(R.layout.fragment_rooms) {
             viewModel.getRooms()
         }
 
+        viewModel.getRooms()
 
         viewModel.rooms.observe(requireActivity()) { state ->
             when(state){
                 is UiState.Success -> {
                     binding.srRooms.isRefreshing = false
-                    binding.rvRooms.adapter =
-                        state.data?.let { RoomItemAdapter(it.results,requireContext()) }
+                    binding.rvRooms.adapter = state.data?.let { RoomItemAdapter(it,requireContext()) }
                 }
                 is UiState.Loading -> {
                     binding.srRooms.isRefreshing = true

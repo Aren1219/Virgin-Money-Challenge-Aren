@@ -8,9 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.virginmoneychallengearen.R
 import com.example.virginmoneychallengearen.databinding.ItemRoomBinding
 import com.example.virginmoneychallengearen.model.rooms.RoomItemModel
+import com.example.virginmoneychallengearen.model.rooms.RoomsModel
 
 class RoomItemAdapter(
-    val roomList: List<RoomItemModel>,
+    val roomList: RoomsModel,
     val context: Context
 ): RecyclerView.Adapter<RoomItemAdapter.RoomViewHolder>(){
 
@@ -31,8 +32,9 @@ class RoomItemAdapter(
     override fun onBindViewHolder(holder: RoomViewHolder, position: Int) {
         val room = roomList[position]
         holder.binding.tvRoomId.text = "Room: ${room.id}"
-        if (room.isOccupied==true){
+        if (room.isOccupied){
             holder.binding.tvRoomOccupied.text = "Occupied"
+//            holder.binding.tvRoomOccupied.te=
         }else{
             holder.binding.tvRoomOccupied.text = "Vacant"
         }

@@ -27,9 +27,7 @@ class RoomsViewModel @Inject constructor(
 
         if (response.isSuccessful){
             _rooms.postValue(
-                response.body()?.let {success->
-                    UiState.Success(RoomsModel(success.resultCount,success.results))
-                }
+                UiState.Success(response.body())
             )
         } else {
             _rooms.postValue(

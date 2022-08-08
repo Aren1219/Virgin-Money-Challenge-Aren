@@ -12,7 +12,7 @@ import com.example.virginmoneychallengearen.model.people.PeopleItemModel
 import com.example.virginmoneychallengearen.model.people.PeopleModel
 
 class PeopleItemAdapter(
-    val employeeList: List<PeopleItemModel>,
+    val employeeList: PeopleModel,
     val context: Context
 ) : RecyclerView.Adapter<PeopleItemAdapter.EmployeeViewHolder>() {
 

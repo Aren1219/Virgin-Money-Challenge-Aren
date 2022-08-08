@@ -26,14 +26,7 @@ class PeopleViewModel @Inject constructor(var repository: Repository): ViewModel
 
             if (response.isSuccessful) {
                 _details.postValue(
-                    response.body()?.let { success ->
-                        UiState.Success(
-                            PeopleModel(
-                                success.resultCount,
-                                success.results
-                            )
-                        )
-                    }
+                    UiState.Success(response.body())
                 )
             } else {
                 _details.postValue(

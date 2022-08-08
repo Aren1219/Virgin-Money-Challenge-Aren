@@ -41,6 +41,7 @@ class PeopleFragment: Fragment(R.layout.fragment_people) {
         binding.srPeople.setOnRefreshListener {
             viewModel.getPeople()
         }
+
         viewModel.getPeople()
 
         viewModel.details.observe(requireActivity()) { state ->
@@ -50,7 +51,6 @@ class PeopleFragment: Fragment(R.layout.fragment_people) {
                 }
                 is UiState.Success -> {
                     binding.rvPeople.adapter = state.data?.let { PeopleItemAdapter(it,requireContext()) }
-//                    state.data?.let { PeopleItemAdapter(it,requireContext()) }
                     binding.srPeople.isRefreshing = false
                 }
                 is UiState.Error -> {

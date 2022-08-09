@@ -36,7 +36,11 @@ class PeopleItemAdapter(
     override fun onBindViewHolder(holder: EmployeeViewHolder, position: Int) {
         val employee = employeeList[position]
 
-        Glide.with(context).load(employee.avatar).into(holder.binding.ivEmployeeAvatar)
+        Glide
+            .with(context)
+            .load(employee.avatar)
+            .error(R.drawable.default_avatar)
+            .into(holder.binding.ivEmployeeAvatar)
         holder.binding.tvEmployeeName.text = "${employee.firstName} ${employee.lastName}"
         holder.binding.tvEmployeeId.text = "id: ${employee.id}"
         holder.binding.tvEmployeeJobTitle.text = employee.jobtitle

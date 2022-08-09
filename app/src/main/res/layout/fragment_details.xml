@@ -17,8 +17,8 @@
 
     <ImageView
         android:id="@+id/ivDtAvatar"
-        android:layout_width="@dimen/cardView_height"
-        android:layout_height="@dimen/cardView_height"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="@dimen/cardView_content_padding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

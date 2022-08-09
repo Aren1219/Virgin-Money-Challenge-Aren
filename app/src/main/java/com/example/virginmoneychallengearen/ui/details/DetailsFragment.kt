@@ -28,6 +28,9 @@ class DetailsFragment: Fragment(R.layout.fragment_details) {
         binding.tvDtEmail.text = myData_list[4]
         binding.tvDtId.text = "id: ${myData_list[6]}"
 
-        Glide.with(requireActivity()).load(myData_list[3]).into(binding.ivDtAvatar)
+        Glide.with(requireActivity())
+            .load(myData_list[3])
+            .error(R.drawable.default_avatar)
+            .into(binding.ivDtAvatar)
     }
 }

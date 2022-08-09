@@ -1,11 +1,14 @@
 package com.example.virginmoneychallengearen.adapters
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
 import com.example.virginmoneychallengearen.R
 import com.example.virginmoneychallengearen.databinding.ItemEmployeeBinding
 import com.example.virginmoneychallengearen.model.people.PeopleItemModel
@@ -32,14 +35,26 @@ class PeopleItemAdapter(
 
     override fun onBindViewHolder(holder: EmployeeViewHolder, position: Int) {
         val employee = employeeList[position]
+
         Glide.with(context).load(employee.avatar).into(holder.binding.ivEmployeeAvatar)
         holder.binding.tvEmployeeName.text = "${employee.firstName} ${employee.lastName}"
-        holder.binding.tvEmployeeId.text = employee.id
+        holder.binding.tvEmployeeId.text = "id: ${employee.id}"
         holder.binding.tvEmployeeJobTitle.text = employee.jobtitle
+
         holder.itemView.setOnClickListener() {
-//            var
-//            employee.lastName
-//            employee.email
+            val myList = mutableListOf<String>(
+                employee.jobtitle,
+                employee.firstName,
+                employee.lastName,
+                employee.avatar,
+                employee.email,
+                employee.favouriteColor,
+                employee.id
+            )
+
+            val bundle = Bundle()
+            bundle.putStringArrayList("user_details",myList as ArrayList<String>)
+            it.findNavController().navigate(R.id.action_mainFragment_to_detailsFragment, bundle)
         }
     }
 

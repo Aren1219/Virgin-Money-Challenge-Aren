@@ -3,6 +3,9 @@ package com.example.virginmoneychallengearen.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.virginmoneychallengearen.R
 import com.example.virginmoneychallengearen.adapters.ViewPagerAdapter
@@ -25,26 +28,23 @@ import kotlin.coroutines.coroutineContext
 class MainActivity() : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
+    lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
 
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fcMain) as NavHostFragment
 
-        val myViewPager: ViewPager2 = binding.vpMain  //use bindings instead of xml reference
-//        val myTabLayout: TabLayout = findViewById(R.id.tlMain)
-        val myTabLayout: TabLayout = binding.tlMain
+        navController = navHostFragment.navController
 
-        val texts = listOf("People", "Room")
-        val mAdapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
-        myViewPager.adapter = mAdapter
-
-        TabLayoutMediator(myTabLayout,myViewPager){tab,position->
-            tab.text=texts[position]
-        }.attach()
+        setupActionBarWithNavController(navController)
 
         setContentView(binding.root)
+    }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

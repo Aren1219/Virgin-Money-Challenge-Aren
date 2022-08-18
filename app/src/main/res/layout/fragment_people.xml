@@ -16,7 +16,8 @@
             android:layout_height="match_parent"
             android:paddingTop="@dimen/cardView_margin"
             android:background="@color/red"
-            tools:listitem="@layout/item_employee"/>
+            tools:listitem="@layout/item_employee"
+            android:clipToPadding="false"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

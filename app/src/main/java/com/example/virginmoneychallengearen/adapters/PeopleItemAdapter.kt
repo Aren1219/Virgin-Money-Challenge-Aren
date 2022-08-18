@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.request.RequestOptions
 import com.example.virginmoneychallengearen.R
 import com.example.virginmoneychallengearen.databinding.ItemEmployeeBinding
 import com.example.virginmoneychallengearen.model.people.PeopleItemModel

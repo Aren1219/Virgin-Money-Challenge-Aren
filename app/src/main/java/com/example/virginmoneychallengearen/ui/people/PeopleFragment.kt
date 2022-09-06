@@ -13,6 +13,8 @@ import com.example.virginmoneychallengearen.databinding.FragmentPeopleBinding
 import com.example.virginmoneychallengearen.util.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -44,17 +46,20 @@ class PeopleFragment: Fragment(R.layout.fragment_people) {
 
         viewModel.getPeople()
 
-        viewModel.details.observe(requireActivity()) { state ->
-            when(state) {
-                is UiState.Loading -> {
-                    binding.srPeople.isRefreshing = true
-                }
-                is UiState.Success -> {
-                    binding.rvPeople.adapter = state.data?.let { PeopleItemAdapter(it,requireContext()) }
-                    binding.srPeople.isRefreshing = false
-                }
-                is UiState.Error -> {
-                    binding.srPeople.isRefreshing = false
+        CoroutineScope(Dispatchers.Main).launch {
+            viewModel.details.collect { state ->
+                when (state) {
+                    is UiState.Loading -> {
+                        binding.srPeople.isRefreshing = true
+                    }
+                    is UiState.Success -> {
+                        binding.rvPeople.adapter =
+                            state.data?.let { PeopleItemAdapter(it, requireContext()) }
+                        binding.srPeople.isRefreshing = false
+                    }
+                    is UiState.Error -> {
+                        binding.srPeople.isRefreshing = false
+                    }
                 }
             }
         }
